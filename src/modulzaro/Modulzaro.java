@@ -17,6 +17,7 @@ public class Modulzaro {
     private static void feladatok() {
         
         programozoiTetelek();
+        adatszerkezetTomb();
     
     }
 
@@ -117,9 +118,9 @@ public class Modulzaro {
         konzolraKiir("  A keresett elem paratlan es nagyobb mint 10" + SEP);
         int i = linKereses();
         if(i != -1){
-            konzolraKiir("  Van ilyen elem, a %d%s".formatted(sorozat[i], SEP));
+            konzolraKiir("  Van ilyen elem, a %d%s".formatted(sorozat[i], SEP + SEP));
         }else{
-            konzolraKiir("  Nincs ilyen elem!" + SEP);
+            konzolraKiir("  Nincs ilyen elem!" + SEP + SEP);
         }
     }
      private static int osszegzes(){
@@ -201,6 +202,54 @@ public class Modulzaro {
 
     private static void konzolraKiir(String kimenet) {
         System.out.print(kimenet);
+    }
+
+    private static void adatszerkezetTomb() {
+        int[][] matrix = tombFeltolt();
+        matrixFoatloVelSzam(matrix);
+        int[][] matrixInvert = invertMatrixFeltolt(matrix);
+        invertMatrixKiir(matrix);
+    }
+
+    private static int[][] tombFeltolt() {
+        int[][] matrix = new int[5][5];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][i] = (int)(Math.random() * 9) + 1;
+            }
+        }
+        return matrix;
+    }
+
+    private static void matrixFoatloVelSzam(int[][] tomb) {
+        konzolraKiir("Tobbdimenzios tomb elemei, foatloban veletlen szamok: " + SEP);
+        for (int i = 0; i < tomb.length; i++) {
+            for (int j = 0; j < tomb[i].length; j++) {
+                System.out.printf("%2d",tomb[i][j]);
+            }
+            System.out.print(SEP);
+        }
+    }
+
+    private static int[][] invertMatrixFeltolt(int[][] matrix) {
+        konzolraKiir("Invertalt tomb: " + SEP);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = (int)(Math.random() * 9) + 1;
+            }
+            matrix[i][i] = 0;
+        }
+        return matrix;
+    }
+
+    private static void invertMatrixKiir(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.printf("%2d",matrix[i][j]);
+            }
+            System.out.print(SEP);
+        }
+    
     }
     
 }
