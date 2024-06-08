@@ -199,11 +199,7 @@ public class Modulzaro {
             return -1;
         }
     }
-
-    private static void konzolraKiir(String kimenet) {
-        System.out.print(kimenet);
-    }
-
+    
     private static void adatszerkezetTomb() {
         int[][] matrix = tombFeltolt();
         matrixFoatloVelSzam(matrix);
@@ -250,6 +246,9 @@ public class Modulzaro {
             System.out.print(SEP);
         }
     
+    }
+    private static void konzolraKiir(String kimenet) {
+        System.out.print(kimenet);
     }
     
 }
