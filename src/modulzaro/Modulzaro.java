@@ -1,20 +1,57 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package modulzaro;
 
-/**
- *
- * @author youne
- */
-public class Modulzaro {
 
-    /**
-     * @param args the command line arguments
-     */
+public class Modulzaro {
+    
+    static int[] sorozat; 
+    static String SEP = System.lineSeparator();
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        feladatok();
+    }
+
+    private static void feladatok() {
+        
+        programozoiTetelek();
+    
+    }
+
+    private static void programozoiTetelek() {
+        osszegzesBemutatasa();
+        megszamlalalsBemutatasa();
+        minKivalasztas();
+        maxKivalasztas();
+        kivalasztasBemutatasa();
+        eldontesekBemutatasa();
+        linKerBemutatasa();
+    }
+
+    private static void osszegzesBemutatasa() {
+        
+    }
+
+    private static void megszamlalalsBemutatasa() {
+        
+    }
+
+    private static void minKivalasztas() {
+        
+    }
+
+    private static void maxKivalasztas() {
+        
+    }
+
+    private static void kivalasztasBemutatasa() {
+        
     }
     
+    private static void eldontesekBemutatasa() {
+        
+    }
+    private static void linKerBemutatasa() {
+       
+    }
 }
