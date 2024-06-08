@@ -22,11 +22,16 @@ public class Modulzaro {
 
     private static void programozoiTetelek() {
         
+        tombFeltoltEsKiir();
+        programozoiTetelekBemutatasa();
+    }
+
+    private static void tombFeltoltEsKiir() {
+        konzolraKiir("A tomb elemei:" + SEP);
         velSzam(-5,20);
         feltolt(10);
         sorozat = feltolt(10);
         tombKiir(4);
-        programozoiTetelekBemutatasa();
     }
     
      private static int velSzam(int also,int felso) {
@@ -49,7 +54,7 @@ public class Modulzaro {
                }
                System.out.printf("%4d",sorozat[i]);
            }
-           System.out.println(SEP);
+           System.out.print(SEP);
        }
       
     private static void programozoiTetelekBemutatasa() {
@@ -58,35 +63,64 @@ public class Modulzaro {
         minKivalasztasBemutatasa();
         maxKivalasztasBemutatasa();
         kivalasztasBemutatasa();
-        eldontesekBemutatasa();
+        eldontesEgyBemutatasa();
+        eldontesMindBemutatasa();
         linKerBemutatasa();
     }
 
     private static void osszegzesBemutatasa() {
-        
+        konzolraKiir("1. Osszegzes tetele: " + SEP);
+        konzolraKiir("  a sorozat osszege: ");
+        int osszeg = osszegzes();
+        konzolraKiir(osszeg + SEP);
     }
 
     private static void megszamlalalsBemutatasa() {
-        
+        konzolraKiir("2. Megszamlalas tetele: " + SEP);
+        konzolraKiir("  a parosak szama: " + megszamlalas() + SEP);
     }
 
     private static void minKivalasztasBemutatasa() {
-        
+        int index = minHely();
+        int ertek = sorozat[index];
+        String s = "3. Minimum kivalasztas tetele: \n  a legkisebb elem helye: %d, erteke: %d".formatted(index, ertek);
+        konzolraKiir(s + SEP);
     }
 
     private static void maxKivalasztasBemutatasa() {
-        
+        int index = maxHely();
+        int ertek = sorozat[index];
+        String s = "4. Maximum kivalasztas tetele: \n  a legnagyobb elem helye: %d, erteke: %d".formatted(index, ertek);
+        konzolraKiir(s + SEP);
     }
 
     private static void kivalasztasBemutatasa() {
-        
+        konzolraKiir("5. Kivalasztas tetele: " + SEP);
+        konzolraKiir("  Az elso elem, ami nagyobb mint 10: ");
+        konzolraKiir(sorozat[kivalasztas()] + SEP);
     }
     
-    private static void eldontesekBemutatasa() {
-        
+    private static void eldontesEgyBemutatasa() {
+        konzolraKiir("6. Eldontes-egy tetele: " + SEP);
+        String valasz = eldontesEgy() ? "van" : "nincs";
+        konzolraKiir("  Van legalabb 1 paratlan: " + valasz + SEP);
     }
+    
+    private static void eldontesMindBemutatasa() {
+        konzolraKiir("7. Eldontes-mind tetele: " + SEP);
+        String valasz = eldontesMind() ? "igen" : "nem";
+        konzolraKiir("  Minden elem nagyobb mint 10: " + valasz + SEP);
+    }
+    
     private static void linKerBemutatasa() {
-       
+        konzolraKiir("8. Linearis kereses tetele: " + SEP);
+        konzolraKiir("  A keresett elem paratlan es nagyobb mint 10" + SEP);
+        int i = linKereses();
+        if(i != -1){
+            konzolraKiir("  Van ilyen elem, a %d%s".formatted(sorozat[i], SEP));
+        }else{
+            konzolraKiir("  Nincs ilyen elem!" + SEP);
+        }
     }
      private static int osszegzes(){
         int osszeg = 0;
@@ -105,7 +139,7 @@ public class Modulzaro {
         }
         return db;
     }
-    private static int minKivalasztas(){
+    private static int minHely(){
         int m = 0;
         for (int i = 1; i < sorozat.length; i++) {
             if(sorozat[i] < sorozat[m]){
@@ -115,7 +149,7 @@ public class Modulzaro {
         return m;
     }
     
-    private static int maxKivalasztas(){
+    private static int maxHely(){
         int m = 0;
         for (int i = 1; i < sorozat.length; i++) {
             if(sorozat[i] > sorozat[m]){
@@ -128,7 +162,7 @@ public class Modulzaro {
     /* csak addig, amíg nincs meg az eredmény: */
     private static int kivalasztas(){
         int i = 0;
-        while( !(sorozat[i] >= -5)){
+        while( !(sorozat[i] >= 10)){
             i++;
         }
         return i;
