@@ -17,8 +17,9 @@ public class logikaiFeladat {
     private static void feladat() {
         sorszamMegjelenit();
         palyaMegjelenit();
-        int bekeres[] = bekeres();
-        elemekCsereje(bekeres);
+        boolean eredmeny =bekeres();
+        eredmeny(eredmeny);
+
     }
     private static void sorszamMegjelenit() {
         for (int i = 0; i < sorszam.length; i++) {
@@ -32,22 +33,28 @@ public class logikaiFeladat {
         }
         System.out.print(SEP);
     }
-    private static int[] bekeres() {
+    private static boolean bekeres() {
         int bekeres[] = new int[2];
+        do{
         konzolraKiir("Adja meg, melyik elemet szeretne athelyezeni (0-6): ");
         bekeres[0] = sc.nextInt();
         konzolraKiir("Adja meg, hova szeretne athelyezni (0-6): ");
         bekeres[1] = sc.nextInt();
-        
-        return bekeres;
-    }
-    private static void elemekCsereje(int[] bekeres) {
         palya[bekeres[1]] = palya[bekeres[0]];
         palya[bekeres[0]] = " ";
         sorszamMegjelenit();
         palyaMegjelenit();
+        }while (!(palya[0].equals("O") && palya[1].equals("O") && palya[2].equals("O") && palya[3].equals(" ")));
+        boolean eredmeny = palya[0].equals("O") && palya[1].equals("O") && palya[2].equals("O") && palya[3].equals(" ");
+        return eredmeny;
     }
     
+    private static void eredmeny(boolean eredmeny) {
+        if(eredmeny){
+            konzolraKiir("Nyert, vege a jateknak! ");
+        }
+    
+    }
     private static void konzolraKiir(String kimenet) {
         System.out.print(kimenet);
     }
